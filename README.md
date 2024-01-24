@@ -8,4 +8,7 @@ Combines the pdf in the folder (sorted numerically).  Name your files numericall
 order
 
 History
-- V1 -> Hardcoded to combine files from the current folder
+  - V1 -> Hardcoded to combine files from the current folder
+
+- pdf-plumber.py
+Extract multilingual text from PDF
