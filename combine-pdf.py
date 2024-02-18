@@ -1,11 +1,17 @@
 import os
 import re
+import argparse
 from PyPDF2 import PdfMerger
 
 def sort_key(filename):
-    """Extract leading numbers and convert them to an integer."""
-    numbers = re.findall(r'^\d+', filename)
-    return int(numbers[0]) if numbers else 0
+    """Extract leading numbers (including decimals) and convert them to a tuple of integers."""
+    numbers = re.findall(r'^(\d+(?:\.\d+)?)', filename)
+    if numbers:
+        parts = numbers[0].split('.')
+        parts = [int(part) for part in parts]
+        return tuple(parts)
+    else:
+        return (0,)
 
 def combine_pdfs(folder_path, output_filename):
     pdf_merger = PdfMerger()
@@ -16,6 +22,7 @@ def combine_pdfs(folder_path, output_filename):
 
     # Add each PDF to the merger
     for filename in pdf_files:
+        print("Merging file ", filename)
         pdf_merger.append(os.path.join(folder_path, filename))
 
     # Write out the combined PDF
@@ -24,8 +31,11 @@ def combine_pdfs(folder_path, output_filename):
 
     print(f"Combined PDF saved as '{output_filename}'")
 
-# Usage
-folder_path = '.'  # Replace with the path to your folder
-output_filename = 'combined.pdf'  # Name of the output file
-combine_pdfs(folder_path, output_filename)
-
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Combine PDF files from a specified folder into a single PDF, sorting them by leading numbers including decimals.")
+    parser.add_argument("folder_path", type=str, help="The path to the folder containing PDF files to be combined.")
+    parser.add_argument("output_filename", type=str, help="The name of the output combined PDF file.")
+    
+    args = parser.parse_args()
+    
+    combine_pdfs(args.folder_path, args.output_filename)
