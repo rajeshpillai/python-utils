@@ -39,3 +39,13 @@ if __name__ == "__main__":
     args = parser.parse_args()
     
     combine_pdfs(args.folder_path, args.output_filename)
+
+
+# EXAMPLE: python conbine-pdf.py /path/to/pdf/folder /home/user/merged_pdfs/output.pdf
+# For sroted PDF: name the files in below numeric formaty any order supproted
+# 1.some.pdf 
+# 1.1 some.pdf 
+# 1.1.someother.pdf
+# 1.3_someother.pdf   
+
+
