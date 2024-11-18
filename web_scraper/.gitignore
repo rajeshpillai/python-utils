@@ -1,0 +1,47 @@
+# Python compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+env/
+
+# Ignore any package dependencies
+*.egg-info/
+*.eggs/
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# VSCode settings (optional, if using VSCode)
+.vscode/
+
+# MacOS files (if running on macOS)
+.DS_Store
+
+# Windows files
+Thumbs.db
+desktop.ini
+
+# Selenium and WebDriver logs
+chromedriver.log
+
+# Temporary screenshot files
+temp_screenshot_*.png
+
+# Final stitched screenshot
+full_page_screenshot.png
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Cache files
+.cache/
+pytest_cache/
+__pycache__/
+
+# Other IDE and editor configurations
+*.swp
+.idea/
